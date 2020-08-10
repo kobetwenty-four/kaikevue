@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>购物车</title>
+  <script src="./vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2> {{title}}</h2>
+    <input type="text" v-model='course' @keydown.enter='addCourse'>
+    <button @click='addCourse'>添加</button>
+    <div v-for="item in courses" :key="item">
+      {{ item }}
+    </div>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+          title: '课程',
+          courses: ['java', 'c', 'javascript'],
+          course: ''
+        }
+      },
+      methods: {
+        addCourse() {
+          this.courses.push(this.course)
+          this.course = ''
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
